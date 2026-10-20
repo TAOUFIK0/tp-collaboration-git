@@ -25,14 +25,14 @@ Ce TP a pour objectif de simuler un travail d'équipe avec Git et GitHub. Le tra
 
 | Élément | Valeur |
 |---|---|
-| Étudiant A | `[À compléter : nom, prénom, pseudo GitHub]` |
-| Étudiant B | `[À compléter : nom, prénom, pseudo GitHub]` |
+| Étudiant A | TAOUFIK RAHIOUI |
+| Étudiant B | MOKHLISS HIMMICHE  |
 | Dépôt | https://github.com/TAOUFIK0/tp-collaboration-git |
 | Branche principale | `main` |
 | Date | 20 octobre 2026 |
 | Pull Request finale | `[À compléter avec le lien réel]` |
 
-[Capture à insérer : page d'accueil du dépôt avec les commits et les fichiers.]
+
 
 ## 2. Préparer le dépôt
 
@@ -75,7 +75,7 @@ Configuration attendue :
 
 L'étudiant B doit également être ajouté comme collaborateur si nécessaire.
 
-[Capture à insérer : configuration du ruleset protégeant `main`.]
+
 
 ## 4. Développer à deux
 
@@ -119,7 +119,7 @@ git commit -m "feat: ajout de la fonctionnalité B"
 git push -u origin feature/etudiant-b
 ```
 
-[Capture à insérer : liste des branches `main`, `feature/etudiant-a` et `feature/etudiant-b`.]
+
 
 ## 5. Créer et résoudre un conflit
 
@@ -151,7 +151,7 @@ git push
 
 Créer une Pull Request `feature/etudiant-a` → `main`. Après l'approbation requise, fusionner la Pull Request.
 
-[Capture à insérer : Pull Request de l'étudiant A fusionnée.]
+
 
 ### 5.3 Faire apparaître le conflit sur la branche B
 
@@ -173,7 +173,7 @@ Bienvenue dans le projet de l'étudiant A.
 >>>>>>> main
 ```
 
-[Capture à insérer : résultat de `git merge main` et `git status`.]
+
 
 ### 5.4 Résoudre le conflit
 
@@ -192,13 +192,13 @@ git commit -m "fix: résolution du conflit dans README"
 git push origin feature/etudiant-b
 ```
 
-[Capture à insérer : `README.md` après résolution du conflit.]
+
 
 ### 5.5 Fusionner la Pull Request de B
 
 Créer une Pull Request `feature/etudiant-b` → `main`, puis la faire approuver et fusionner.
 
-[Capture à insérer : Pull Request de l'étudiant B fusionnée.]
+
 
 ## 6. Livrer la version finale
 
@@ -229,7 +229,7 @@ git push origin v1.0.0
 # ou : git push origin --tags
 ```
 
-[Capture à insérer : page des tags ou des releases montrant `v1.0.0`.]
+
 
 ### 6.3 Vérifier l'historique
 
@@ -239,21 +239,33 @@ git log --oneline --graph --all
 
 L'historique attendu doit montrer l'initialisation, les contributions des deux branches, les fusions des Pull Requests, la résolution du conflit et le tag `v1.0.0`.
 
-[Capture à insérer : historique Git ou graphe des commits.]
+
 
 ## 7. Difficultés, bilan et compétences acquises
 
 ### Difficultés rencontrées
 
-- `[À compléter avec les difficultés réellement rencontrées.]`
-- `[À compléter avec les solutions appliquées.]`
+Pendant ce TP, nous avons rencontré plusieurs difficultés :
 
-### Points d'attention
+- Nous ne trouvions pas l'option **Branches** dans les paramètres GitHub.  
+  Nous avons finalement utilisé **Settings → Rules → Rulesets** pour protéger la branche `main`.
 
-- Utiliser Git Bash pour éviter les problèmes de guillemets avec les commandes `echo`.
-- Supprimer tous les marqueurs `<<<<<<<`, `=======` et `>>>>>>>` avant de valider un conflit.
-- Ne jamais pousser directement sur `main` lorsque la branche est protégée.
-- Vérifier les noms et liens réels des Pull Requests et du tag avant de remettre le rapport.
+- La branche `main` devait être protégée contre les push directs.  
+  Nous avons créé un ruleset actif avec l'option **Require a pull request before merging** et une approbation obligatoire.
+
+- Un conflit est apparu lorsque les deux étudiants ont modifié la même ligne du fichier `README.md`.  
+  Nous avons utilisé `git status` pour identifier le fichier concerné, puis nous avons supprimé les marqueurs de conflit :
+  `<<<<<<<`, `=======` et `>>>>>>>`.
+
+- Nous avons dû récupérer les dernières modifications avec les commandes suivantes :
+
+```bash
+git checkout main
+git pull origin main
+git checkout feature/etudiant-b
+git merge main
+
+
 
 ### Compétences acquises
 
